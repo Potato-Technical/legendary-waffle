@@ -6,7 +6,18 @@
     <title>Inscription</title>
 </head>
 <body>
-    <h1>Inscription</h1>
-    <p>Contenu à venir...</p>
+    <h2>Inscription</h2>
+    <form action="/mon-projet-git/public/index.php?url=inscription" method="POST">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">S'inscrire</button>
+    </form>
 </body>
 </html>

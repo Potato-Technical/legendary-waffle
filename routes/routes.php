@@ -1,33 +1,28 @@
 <?php
-// Activer l'affichage des erreurs pour le débogage
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-// Récupère l'URL demandée
-$request = $_GET['url'] ?? 'home';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
 
-// Liste des routes disponibles
+$authController = new AuthController($pdo);
+
 $routes = [
     'home' => 'views/home.php',
     'covoiturages' => 'views/covoiturages.php',
     'detail' => 'views/detail.php',
-    'inscription' => 'views/inscription.php',
-    'connexion' => 'views/connexion.php',
+    'inscription' => function() use ($authController) { $authController->register(); },
+    'connexion' => function() use ($authController) { $authController->login(); },
+    'logout' => function() use ($authController) { $authController->logout(); },
     'dashboard' => 'views/dashboard.php'
 ];
 
-// Vérification du chemin du fichier
-if (isset($routes[$request])) {
-    $filePath = __DIR__ . '/../app/' . $routes[$request];
+$request = $_GET['url'] ?? 'home';
 
-    if (file_exists($filePath)) {
-        require_once $filePath;
+if (isset($routes[$request])) {
+    if (is_callable($routes[$request])) {
+        $routes[$request]();
     } else {
-        http_response_code(404);
-        require_once __DIR__ . '/../app/views/404.php';
+        require_once __DIR__ . '/../app/' . $routes[$request];
     }
 } else {
     http_response_code(404);
     require_once __DIR__ . '/../app/views/404.php';
 }
-?>
