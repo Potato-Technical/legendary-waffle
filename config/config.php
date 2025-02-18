@@ -5,7 +5,7 @@ define('DB_NAME', 'ecoride');
 define('DB_USER', 'ecoride_admin');  // Utilisateur 
 define('DB_PASS', '1234');  // Mot de passe
 
-// Options PDO
+// Options PDO pour une connexion sécurisée et efficace
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
