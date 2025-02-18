@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "depart": "Paris",
+        "arrivee": "Lyon",
+        "prix": 30,
+        "places": 3,
+        "eco": true
+    },
+    {
+        "id": 2,
+        "depart": "Marseille",
+        "arrivee": "Nice",
+        "prix": 20,
+        "places": 2,
+        "eco": false
+    },
+    {
+        "id": 3,
+        "depart": "Toulouse",
+        "arrivee": "Bordeaux",
+        "prix": 25,
+        "places": 4,
+        "eco": true
+    }
+]
